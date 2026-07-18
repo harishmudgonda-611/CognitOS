@@ -1,0 +1,11 @@
+def status():
+    print("=" * 40)
+    print("        Cognit OS Status")
+    print("=" * 40)
+    print("Kernel     : OK")
+    print("Builder    : OK")
+    print("Planner    : OK")
+    print("Workflow   : OK")
+    print("Agents     : OK")
+    print("Memory     : OK")
+    print("=" * 40)

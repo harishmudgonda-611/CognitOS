@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cognit-os"
+version = "0.1.0"
+description = "Cognit OS Autonomous Development Platform"
+readme = "README.md"
+requires-python = ">=3.11"
+
+authors = [
+  {name = "Hari"}
+]
+
+dependencies = []
+
+[project.scripts]
+cognit = "cognit.cli.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

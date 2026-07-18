@@ -1,0 +1,3 @@
+class PlannerConfig:
+
+    ENABLED = True
