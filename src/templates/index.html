@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚀 CognitOS</h1>
+
+    <p class="subtitle">
+        Autonomous AI Operating System
+    </p>
+
+    <textarea
+        id="mission"
+        placeholder="Describe your mission..."
+    ></textarea>
+
+    <button onclick="executeMission()">
+        Execute Mission
+    </button>
+
+    <div class="panel">
+
+        <h2>Planner Output</h2>
+
+        <pre id="output">
+Ready...
+        </pre>
+
+    </div>
+
+</div>
+
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>

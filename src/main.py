@@ -1,7 +1,7 @@
 from rich.console import Console
 from datetime import datetime
 import platform
-from src.ai.zyloo import chat
+
 
 console = Console()
 

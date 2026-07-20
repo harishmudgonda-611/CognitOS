@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CognitOS</title>
+
+    <style>
+        body{
+            background:#111827;
+            color:white;
+            font-family:Arial,Helvetica,sans-serif;
+            margin:0;
+            padding:20px;
+        }
+
+        h1{
+            color:#4ade80;
+        }
+
+        .card{
+            background:#1f2937;
+            padding:20px;
+            border-radius:12px;
+            margin-top:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border-radius:8px;
+            border:none;
+            margin-top:10px;
+        }
+
+        button{
+            margin-top:15px;
+            padding:12px 20px;
+            border:none;
+            border-radius:8px;
+            background:#22c55e;
+            color:white;
+            font-size:16px;
+        }
+
+        ul{
+            line-height:28px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>🧠 CognitOS</h1>
+
+<div class="card">
+
+<h2>Kernel Status</h2>
+
+<p><b>Runtime:</b> {{ status.runtime }}</p>
+
+<p><b>Registered Services:</b> {{ status.services }}</p>
+
+<h3>Components</h3>
+
+<ul>
+
+{% for item in status.registered %}
+
+<li>{{ item }}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>Task</h2>
+
+<input
+type="text"
+placeholder="Example: Build AI website"
+/>
+
+<button>
+
+Execute
+
+</button>
+
+</div>
+
+</body>
+</html>

@@ -13,6 +13,12 @@ class FileSystem:
         path.write_text(content, encoding="utf-8")
 
     @staticmethod
+    def read_file(path: Path):
+        if not path.exists():
+            return None
+        return path.read_text(encoding="utf-8")
+
+    @staticmethod
     def exists(path: Path):
         return path.exists()
 
@@ -20,5 +26,5 @@ class FileSystem:
     def list_files(path: Path):
         if not path.exists():
             return []
-
         return sorted(item.name for item in path.iterdir())
+        
