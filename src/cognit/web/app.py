@@ -1,42 +1,45 @@
 """
-CognitOS Web Application
-
-Flask entry point for the CognitOS dashboard.
+Cognit Hub Web Application
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from cognit.kernel.kernel import CognitKernel
+from cognit.orchestrator.orchestrator import TaskOrchestrator
 
 app = Flask(__name__)
 
-# Create the Kernel
+# Initialize Kernel
 kernel = CognitKernel()
-
-# Initialize all kernel services
 kernel.initialize()
-
-# Start the runtime
 kernel.start()
 
+# Initialize Task Orchestrator
+orchestrator = TaskOrchestrator()
 
-@app.route("/")
+
+@app.route("/", methods=["GET", "POST"])
 def home():
-    """Home Dashboard"""
+    result = None
+
+    if request.method == "POST":
+        goal = request.form.get("goal", "").strip()
+
+        if goal:
+            result = orchestrator.execute(goal)
 
     return render_template(
         "index.html",
-        status=kernel.status()
+        status=kernel.status(),
+        result=result,
     )
 
 
 @app.route("/health")
 def health():
-    """Health Check"""
-
     return {
         "status": "ok",
-        "kernel": kernel.status()
+        "kernel": kernel.status(),
     }
 
 
@@ -44,6 +47,6 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=True
+        debug=True,
     )
     

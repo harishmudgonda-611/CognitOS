@@ -1,0 +1,16 @@
+{
+  "default_model": "gemini",
+
+  "gemini": {
+    "enabled": true,
+    "api_key": "AQ.Ab8RN6Ltx9-fIQ5z001-TSDvZfeSS8gD1cOE_GuUaKvrTQUZ5w",
+    "model": "gemini-flash-latest"
+  },
+
+  "openai_compatible": {
+    "enabled": false,
+    "base_url": "",
+    "api_key": "",
+    "model": ""
+  }
+}

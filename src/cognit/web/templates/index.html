@@ -1,68 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CognitOS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognit Hub</title>
 
-    <style>
-        body{
-            background:#111827;
-            color:white;
-            font-family:Arial,Helvetica,sans-serif;
-            margin:0;
-            padding:20px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        h1{
-            color:#4ade80;
-        }
+body{
+    background:#111827;
+    color:#ffffff;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        .card{
-            background:#1f2937;
-            padding:20px;
-            border-radius:12px;
-            margin-top:20px;
-        }
+header{
+    background:#1f2937;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    color:#4ade80;
+}
 
-        input{
-            width:100%;
-            padding:12px;
-            border-radius:8px;
-            border:none;
-            margin-top:10px;
-        }
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
 
-        button{
-            margin-top:15px;
-            padding:12px 20px;
-            border:none;
-            border-radius:8px;
-            background:#22c55e;
-            color:white;
-            font-size:16px;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
 
-        ul{
-            line-height:28px;
-        }
-    </style>
+.card{
+    background:#1f2937;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.card h2,
+.card h3{
+    margin-bottom:12px;
+}
+
+.status{
+    color:#4ade80;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin:6px 0;
+}
+
+.footer{
+    text-align:center;
+    color:#9ca3af;
+    margin-top:30px;
+    padding-bottom:20px;
+}
+</style>
 
 </head>
 
 <body>
 
-<h1>🧠 CognitOS</h1>
+<header>
+🧠 Cognit Hub v1.0
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+<h3>Kernel</h3>
+<p class="status">{{ status.runtime }}</p>
+</div>
+
+<div class="card">
+<h3>Services</h3>
+<p class="status">{{ status.services }}</p>
+</div>
+
+<div class="card">
+<h3>Memory</h3>
+<p>Ready</p>
+</div>
+
+<div class="card">
+<h3>Planner</h3>
+<p>Ready</p>
+</div>
+
+</div>
 
 <div class="card">
 
-<h2>Kernel Status</h2>
+<h2>Quick Actions</h2>
 
-<p><b>Runtime:</b> {{ status.runtime }}</p>
+<div class="actions">
 
-<p><b>Registered Services:</b> {{ status.services }}</p>
+<button type="button">🤖 AI Chat</button>
 
-<h3>Components</h3>
+<button type="button">🛠 Builder</button>
+
+<button type="button">📋 Mission</button>
+
+<button type="button">⚡ Agents</button>
+
+<button type="button">🧠 Memory</button>
+
+<button type="button">⚙ Settings</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Execute Task</h2>
+
+<form method="POST">
+
+<input
+type="text"
+name="goal"
+placeholder="Example: Build an AI website"
+required>
+
+<button type="submit">
+🚀 Execute
+</button>
+
+</form>
+
+</div>
+
+{% if result %}
+
+<div class="card">
+
+<h2>Execution Result</h2>
+
+<p><strong>Goal</strong></p>
+<p>{{ result.goal }}</p>
+
+<p><strong>Blueprint</strong></p>
+<p>{{ result.blueprint }}</p>
+
+<p><strong>Reasoning</strong></p>
+<p>{{ result.reasoning }}</p>
+
+<p><strong>Plan</strong></p>
+
+<ol>
+
+{% for step in result.plan %}
+
+<li>{{ step }}</li>
+
+{% endfor %}
+
+</ol>
+
+<p><strong>Status:</strong> {{ result.status }}</p>
+
+</div>
+
+{% endif %}
+
+<div class="card">
+
+<h2>Registered Components</h2>
 
 <ul>
 
@@ -76,20 +229,11 @@
 
 </div>
 
-<div class="card">
+<div class="footer">
 
-<h2>Task</h2>
+Cognit Hub • Alpha v1.0
 
-<input
-type="text"
-placeholder="Example: Build AI website"
-/>
-
-<button>
-
-Execute
-
-</button>
+</div>
 
 </div>
 
