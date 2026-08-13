@@ -1,16 +1,18 @@
 {
-  "default_model": "gemini",
-
-  "gemini": {
-    "enabled": true,
-    "api_key": "AQ.Ab8RN6Ltx9-fIQ5z001-TSDvZfeSS8gD1cOE_GuUaKvrTQUZ5w",
-    "model": "gemini-flash-latest"
-  },
-
-  "openai_compatible": {
-    "enabled": false,
-    "base_url": "",
-    "api_key": "",
-    "model": ""
+  "default_provider": "gemini",
+  "providers": {
+    "gemini": {
+      "enabled": true,
+      "api_key_env": "GEMINI_API_KEY",
+      "model": "gemini-flash-latest",
+      "strengths": ["general", "coding", "reasoning", "vision"]
+    },
+    "openai_compatible": {
+      "enabled": false,
+      "base_url": "",
+      "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
+      "model": "",
+      "strengths": ["general", "coding", "reasoning"]
+    }
   }
 }
