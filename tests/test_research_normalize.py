@@ -1,6 +1,9 @@
+import sys
 import unittest
+from pathlib import Path
 
-from research.normalize import normalize_html
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from cognit.research.normalize import normalize_html
 
 
 class NormalizeHTMLTests(unittest.TestCase):
@@ -29,11 +32,8 @@ class NormalizeHTMLTests(unittest.TestCase):
             normalize_html("x" * 2_000_001, "https://example.org/")
 
     def test_deduplicates_links_and_keeps_provenance(self):
-        record = normalize_html(
-            '<a href="/a">A</a><a href="/a">again</a>',
-            "https://example.org/root",
-            "2026-01-01T00:00:00Z",
-        )
+        record = normalize_html('<a href="/a">A</a><a href="/a">again</a>',
+                                "https://example.org/root", "2026-01-01T00:00:00Z")
         self.assertEqual(record["links"], ["https://example.org/a"])
         self.assertEqual(record["retrieved_at"], "2026-01-01T00:00:00Z")
         self.assertEqual(record["source_url"], "https://example.org/root")
